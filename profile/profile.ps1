@@ -2,6 +2,8 @@
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 
 # Aliases
+Set-Alias vim nvim 
+
 Set-Alias ll ls
 
 Set-Alias touch New-Item
