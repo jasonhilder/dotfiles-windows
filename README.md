@@ -55,7 +55,12 @@ cd ~\dotfiles-windows
 choco install .\system_packages\packages.config
 ```
 
-### Stuff installed without chocolatey
+### Software installed without chocolatey
 
-* Rust (rustup)
-* Raylib
+[Mingw](https://sourceforge.net/projects/mingw/)
+
+[Raylib](https://www.raylib.com/)
+
+[Rust (rustup)](https://www.rust-lang.org/tools/install)
+
+[Godot](https://godotengine.org/download/windows/)
