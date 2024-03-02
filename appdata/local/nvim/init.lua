@@ -58,6 +58,22 @@ vim.o.breakindent = true
 vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 vim.o.showmode = false
+vim.o.shell = "powershell.exe"
+---------------------------------------------------------------------------------
+-- [[ Powershell settings ]]
+---------------------------------------------------------------------------------
+local powershell_options = {
+  shell = vim.fn.executable "pwsh" == 1 and "pwsh" or "powershell",
+  shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;",
+  shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait",
+  shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode",
+  shellquote = "",
+  shellxquote = "",
+}
+
+for option, value in pairs(powershell_options) do
+  vim.opt[option] = value
+end
 ---------------------------------------------------------------------------------
 -- [[ KEYMAPS ]]
 ---------------------------------------------------------------------------------
@@ -65,22 +81,13 @@ vim.g.mapleader = " ";
 vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("i", "jj", "<Esc>")
 -- clear search highlights
-vim.keymap.set("n", "<leader>nh", ":noh<CR>", { desc = "Clear highlights" })
+vim.keymap.set("n", "<leader>h", ":noh<CR>", { desc = "Clear highlights" })
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
--- Window management
-vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left split" })
-vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to below split" })
-vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to above split" })
-vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right split" })
-vim.keymap.set("n", "<C-Up>", "<cmd>resize -2<CR>", { desc = "Resize split up" })
-vim.keymap.set("n", "<C-Down>", "<cmd>resize +2<CR>", { desc = "Resize split down" })
-vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -2<CR>", { desc = "Resize split left" })
-vim.keymap.set("n", "<C-Right", "<cmd>vertical resize +2<CR>", { desc = "Resize split left" })
 -- Buffer management
-vim.keymap.set("n", "<leader>bl", "<cmd>b#<CR>", { desc = "Last edited buffer" })
-vim.keymap.set("n", "<leader>bd", "<cmd>bd<CR>", { desc = "Close buffer" })
+vim.keymap.set("n", "<leader>l", "<cmd>b#<CR>", { desc = "Last edited buffer" })
+vim.keymap.set("n", "<leader>d", "<cmd>bd<CR>", { desc = "Close buffer" })
 vim.keymap.set("n", "<S-h>", "<cmd>bp<CR>", { desc = "previous buffer" })
 vim.keymap.set("n", "<S-l>", "<cmd>bn<CR>", { desc = "next buffer" })
 -- Stay in indent mode
@@ -96,6 +103,8 @@ vim.keymap.set("n", "<leader>cr", ":lua vim.lsp.buf.rename() <CR>", { desc = "Re
 vim.keymap.set("n", "<leader>cf", ":lua vim.lsp.buf.format() <CR>", { desc = "Format code" })
 -- Notes management
 vim.keymap.set("n", "<leader>nd", ":exe 'r!date \"+\\%A, \\%Y-\\%m-\\%d\"' <CR>", { desc = "Insert Date" })
+-- Terminal escape
+vim.keymap.set('t', '<C-k>', "<C-\\><C-n><C-w>h",{silent = true})
 ---------------------------------------------------------------------------------
 -- [[ PLUGIN CONFIGS ]]
 ---------------------------------------------------------------------------------
@@ -121,6 +130,7 @@ capabilities.textDocument.completion.completionItem = {
         },
     },
 }
+
 --capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local on_attach = function(client)
@@ -161,11 +171,11 @@ local mason_lspconfig = require 'mason-lspconfig'
 mason_lspconfig.setup {
     ensure_installed = {
         'lua_ls',
-        -- 'intelephense',
+        'clangd',
+        'gopls',
         -- 'tsserver',
         -- 'rust_analyzer',
-        -- 'gopls',
-        -- 'zig????'
+        -- 'zls'
     },
 }
 
@@ -190,7 +200,14 @@ local handlers = {
 }
 ------------------------------------------------------------------------------
 -- SERVERS: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-
+------------------------------------------------------------------------------
+-- Javascript/Typescript
+------------------------------------------------------------------------------
+-- lspconfig.tsserver.setup {
+--     on_attach = on_attach,
+--     capabilities = capabilities,
+-- }
+------------------------------------------------------------------------------
 -- RUST
 ------------------------------------------------------------------------------
 -- lspconfig.rust_analyzer.setup {
@@ -199,20 +216,6 @@ local handlers = {
 --     capabilities = capabilities,
 --     filetypes = { "rust" },
 --     root_dir = lspconfig.util.root_pattern("Cargo.toml")
--- }
-------------------------------------------------------------------------------
--- Golang
-------------------------------------------------------------------------------
--- lspconfig.gopls.setup {
---     on_attach = on_attach,
---     capabilities = capabilities,
--- }
-------------------------------------------------------------------------------
--- Javascript/Typescript
-------------------------------------------------------------------------------
--- lspconfig.tsserver.setup {
---     on_attach = on_attach,
---     capabilities = capabilities,
 -- }
 ------------------------------------------------------------------------------
 -- LUA
@@ -232,4 +235,11 @@ lspconfig.lua_ls.setup {
 ------------------------------------------------------------------------------
 lspconfig.clangd.setup{
     handlers = handlers
+}
+------------------------------------------------------------------------------
+-- Golang
+------------------------------------------------------------------------------
+lspconfig.gopls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
 }

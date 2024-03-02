@@ -22,7 +22,7 @@ return {
         version = "*", -- Use for stability; omit to use `main` branch for the latest features
         event = "BufEnter",
         keys = {
-            { "<leader><leader>", "<cmd>lua MiniPick.builtin.files({ tool = 'git' })<cr>", desc = 'Find File'},
+            { "<leader>ff", "<cmd>lua MiniPick.builtin.files({ tool = 'git' })<cr>", desc = 'Find File'},
             { "<leader>fb", "<cmd>lua MiniPick.builtin.buffers()<cr>", desc = 'Find Buffer'},
             { "<leader>fl", "<cmd>lua MiniPick.builtin.resume()<cr>", desc = 'Resume Last Search'},
             { "<leader>fs", "<cmd>lua MiniPick.builtin.grep_live()<cr>", desc = 'Find String'},
@@ -53,9 +53,9 @@ return {
 
             local toggle_files = function ()
                 if mf.close() == nil then
-                   mf.open()
+                    mf.open()
                 else
-                   mf.close()
+                    mf.close()
                 end
 
             end
@@ -67,20 +67,10 @@ return {
     -- Mini comment: Comment code blocks
     ---------------------------------------------------------------------------------
     {
-    'echasnovski/mini.comment',
-    version = false,
-    config = function()
-        require('mini.comment').setup()
-    end
-    },
-    ---------------------------------------------------------------------------------
-    -- Mini Pairs: Auto pairs ([{}])
-    ---------------------------------------------------------------------------------
-    {
-        'echasnovski/mini.pairs',
+        'echasnovski/mini.comment',
         version = false,
         config = function()
-            require('mini.pairs').setup()
+            require('mini.comment').setup()
         end
     },
     ---------------------------------------------------------------------------------
@@ -133,7 +123,7 @@ return {
                     -- `z` key
                     { mode = 'n', keys = 'z' },
                     { mode = 'x', keys = 'z' },
-               },
+                },
 
                 clues = {
                     { mode = 'n', keys = '<Leader>f', desc = 'Find' },
