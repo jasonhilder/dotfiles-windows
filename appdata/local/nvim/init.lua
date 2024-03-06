@@ -234,12 +234,24 @@ lspconfig.lua_ls.setup {
 -- C 
 ------------------------------------------------------------------------------
 lspconfig.clangd.setup{
-    handlers = handlers
+    handlers = handlers,
+    on_attach = on_attach,
+    capabilities = capabilities,
 }
 ------------------------------------------------------------------------------
 -- Golang
 ------------------------------------------------------------------------------
 lspconfig.gopls.setup {
+    handlers = handlers,
     on_attach = on_attach,
     capabilities = capabilities,
+}
+------------------------------------------------------------------------------
+-- GDScript 
+------------------------------------------------------------------------------
+lspconfig.gdscript.setup{
+    handlers = handlers,
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = { "gd", "gdscript", "gdscript3" },
 }
