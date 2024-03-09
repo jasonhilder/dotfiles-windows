@@ -22,6 +22,7 @@ return {
         version = "*", -- Use for stability; omit to use `main` branch for the latest features
         event = "BufEnter",
         keys = {
+            { "<leader>.",  "<cmd>lua MiniPick.builtin.files({ tool = 'git' })<cr>", desc = 'Find File'},
             { "<leader>ff", "<cmd>lua MiniPick.builtin.files({ tool = 'git' })<cr>", desc = 'Find File'},
             { "<leader>fb", "<cmd>lua MiniPick.builtin.buffers()<cr>", desc = 'Find Buffer'},
             { "<leader>fl", "<cmd>lua MiniPick.builtin.resume()<cr>", desc = 'Resume Last Search'},
@@ -46,7 +47,7 @@ return {
         event = "BufEnter",
         keys = {
             { "<leader>fe", "<cmd>lua MiniFiles.open()<cr>", desc = 'Explorer'},
-            { "<leader>.",  "<cmd>lua MiniFiles.open()<cr>", desc = 'Explorer'},
+            { "<leader>e",  "<cmd>lua MiniFiles.open()<cr>", desc = 'Explorer'},
         },
         config = function()
             local mf = require('mini.files')
@@ -60,8 +61,6 @@ return {
                 end
 
             end
-
-            vim.keymap.set("n", "<leader>e", toggle_files, {desc = 'Explorer'})
         end
     },
     ---------------------------------------------------------------------------------
