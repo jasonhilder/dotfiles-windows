@@ -38,7 +38,7 @@ config.keys = {
         action = act.SplitVertical { domain = 'CurrentPaneDomain' },
     },
     {
-        key = 'n',
+        key = 'o',
         mods = 'ALT',
         action = act.ActivateTabRelative(1)
     },

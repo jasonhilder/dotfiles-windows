@@ -151,11 +151,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
         end
 
         nmap('<leader>cr', vim.lsp.buf.rename, 'Rename Symbol')
-        -- nmap('<leader>ca', require('fzf-lua').lsp_code_actions, 'Code Actions')
-        -- nmap('<leader>cs', require('fzf-lua').lsp_document_symbols, 'Document Symbols')
+        nmap('<leader>ca', vim.lsp.buf.code_action, 'Code Actions')
+        nmap('<leader>cs', vim.lsp.buf.document_symbol, 'Document Symbols')
 
-        -- nmap('<leader>D', vim.lsp.buf.type_definition, 'Type Definition')
-        -- nmap('gr', require('fzf-lua').lsp_definitions, 'Goto [R]eferences')
         nmap('gd', vim.lsp.buf.definition, 'Goto Definition')
         nmap('gD', vim.lsp.buf.declaration, 'Goto Declaration')
         nmap('gi', vim.lsp.buf.implementation, 'Goto Implementation')
