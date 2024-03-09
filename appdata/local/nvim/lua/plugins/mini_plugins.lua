@@ -27,9 +27,9 @@ return {
             { "<leader>fl", "<cmd>lua MiniPick.builtin.resume()<cr>", desc = 'Resume Last Search'},
             { "<leader>fs", "<cmd>lua MiniPick.builtin.grep_live()<cr>", desc = 'Find String'},
             { "<leader>fh", "<cmd>lua MiniPick.builtin.help()<cr>", desc = 'Find Help'},
-            { "<leader>bb", "<cmd>lua MiniPick.builtin.buffers()<cr>", desc = 'Find Buffer'},
+            { "<leader>fm", "<cmd>Pick marks<cr>", desc = 'Find Marks'},
             { "<leader>q", "<cmd>Pick diagnostic<cr>", desc = 'Diagnostics'},
-            { "<leader>fm", "<cmd>Pick marks<cr>", desc = 'Find Marks'}
+            { "<leader>b", "<cmd>lua MiniPick.builtin.buffers()<cr>", desc = 'Find Buffer'},
         },
         config = function()
             require('mini.pick').setup({
@@ -46,6 +46,7 @@ return {
         event = "BufEnter",
         keys = {
             { "<leader>fe", "<cmd>lua MiniFiles.open()<cr>", desc = 'Explorer'},
+            { "<leader>.",  "<cmd>lua MiniFiles.open()<cr>", desc = 'Explorer'},
         },
         config = function()
             local mf = require('mini.files')
