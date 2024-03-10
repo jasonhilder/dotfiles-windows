@@ -1,9 +1,16 @@
 local wezterm = require 'wezterm'
+local act = wezterm.action
+local mux = wezterm.mux
 local config = {}
 
 if wezterm.config_builder then
     config = wezterm.config_builder()
 end
+
+wezterm.on('gui-startup', function(cmd)
+  local tab, pane, window = mux.spawn_window(cmd or {})
+  window:gui_window():maximize()
+end)
 
 --------------------------------------------
 -- General settings 
@@ -24,8 +31,6 @@ config.font_size = 11.0
 --------------------------------------------
 -- key maps
 --------------------------------------------
-local act = wezterm.action
-
 config.keys = {
     {
         key = '=',
@@ -93,9 +98,13 @@ config.keys = {
         action = act.SpawnTab 'CurrentPaneDomain',
     },
     {
+        key = 'w',
+        mods = 'ALT',
+        action = wezterm.action.CloseCurrentPane { confirm = true },
+    },
+    {
         key = 't',
         mods = 'ALT',
-        -- mods = 'CTRL|ALT',
         action = act.SpawnTab 'CurrentPaneDomain',
     }
 }

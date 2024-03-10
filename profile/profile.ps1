@@ -15,6 +15,8 @@ Set-Alias lg lazygit
 
 Set-Alias ld lazydocker
 
+Set-Alias home 'cd ~'
+
 # Determine size of a file or total size of a directory
 Set-Alias fs Get-DiskUsage
 
