@@ -9,5 +9,6 @@ return {
         config = function()
             vim.cmd.colorscheme('tokyonight-night')
         end
-    }
+    },
+    { 'kepano/flexoki-neovim', name = 'flexoki' }
 }
