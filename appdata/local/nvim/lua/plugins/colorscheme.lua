@@ -3,12 +3,25 @@
 ---------------------------------------------------------------------------------
 return {
     {
-        "folke/tokyonight.nvim",
-        lazy = false,
-        priority = 1000,
+        "rose-pine/neovim",
+        name = "rose-pine",
         config = function()
-            vim.cmd.colorscheme('tokyonight-night')
+            require('rose-pine').setup({
+                disable_background = true,
+            })
+
+            vim.cmd("colorscheme rose-pine")
+
         end
     },
-    { 'kepano/flexoki-neovim', name = 'flexoki' }
+    {
+        "xiyaowong/transparent.nvim",
+        config = function()
+            require("transparent").setup({
+                extra_groups = {
+                    "NormalFloat"
+                }
+            })
+        end
+    }
 }
