@@ -25,13 +25,13 @@ Then setup ssh keys etc etc...
 ```
 cd ~
 
-git clone git@github.com:jasonhilder/dotfiles-windows.git
+git clone git@github.com:jasonhilder/dotfiles-windows.git dotfiles
 ```
 
 #### Copy config files and profile settings
 
 ```
-cd ~\dotfiles-windows
+cd ~\dotfiles
 
 .\setup.ps1
 ```
