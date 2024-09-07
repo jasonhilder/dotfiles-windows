@@ -19,6 +19,7 @@ git config --global user.name "user name"
 
 git config --global user.email "your_email@example.com"
 ```
+Then setup ssh keys etc etc...
 
 #### Get the repo
 ```
