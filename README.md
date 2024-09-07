@@ -2,6 +2,11 @@
 
 ## Setup Steps
 
+#### Install windows
+1. Update windows
+2. [Activate Windows](https://github.com/massgravel/Microsoft-Activation-Scriptss)
+3. [Debloat Windows](https://github.com/Raphire/Win11Debloat)
+
 #### Set execution policy
 ```
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
@@ -43,6 +48,13 @@ Scoop makes life easy and linux like, setting up paths etc as well as exporting 
 ```
 scoop import .\scoop_apps.json
 ```
+
+#### (Optional) Install Vim plug for vim setup
+```
+iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
+    ni $HOME/vimfiles/autoload/plug.vim -Force
+```
+Remember to run :PlugInstall on first run
 
 ### Software installed without scoop
 
