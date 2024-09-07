@@ -1,38 +1,23 @@
-# Dotfiles Windows
+# Dotfiles Windows :)
 
 ## Setup Steps
 
-#### Open terminal as admin
-
-#### Install Chocolatey
-```
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-```
-
 #### Set execution policy
 ```
-Set-ExecutionPolicy Unrestricted
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 
-#### Install git
+#### Install Scoop
 ```
-choco install git
+Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 ```
+scoop should be the first place to get applications, if not available do the normal route.
 
 #### Configure git
 ```
 git config --global user.name "user name"
 
 git config --global user.email "your_email@example.com"
-```
-
-#### Configure ssh and add to github
-```
-ssh-keygen -o -t rsa -C "email@address.com"
-
-cd ~/.ssh
-
-cat id_rsa.pub
 ```
 
 #### Get the repo
@@ -50,17 +35,26 @@ cd ~\dotfiles-windows
 .\setup.ps1
 ```
 
-#### install chocolatey packages
+#### Install scoop apps
+
+Scoop makes life easy and linux like, setting up paths etc as well as exporting all installed apps as json for an easy import 
+
 ```
-choco install .\system_packages\packages.config
+scoop import .\scoop_apps.json
 ```
 
-### Software installed without chocolatey
+### Software installed without scoop
 
-[Mingw](https://sourceforge.net/projects/mingw/)
+Generally software that has auto updates like browsers, or things I found don't work as expected with my setup and scoop.
 
-[Raylib](https://www.raylib.com/)
+[Firefox](https://www.mozilla.org/en-US/firefox/developer/)
 
-[Rust (rustup)](https://www.rust-lang.org/tools/install)
+[Steam](https://store.steampowered.com/about)
 
-[Godot](https://godotengine.org/download/windows/)
+SDL I had to make a work around I have a local_libs folder in my home directory where these are linked for local dev, each of the following sdl2 libs have been downloaded as the mingw varient to work with my toolchain.
+SDL2
+SDL2_image
+SDL2_mixer
+SDL2_ttf
+SDL2_net
+
