@@ -64,10 +64,11 @@ Generally software that has auto updates like browsers, or software that doesn't
 
 [Steam](https://store.steampowered.com/about)
 
-SDL I had to make a work around I have a local_libs folder in my home directory where these are linked for local dev, each of the following sdl2 libs have been downloaded as the mingw varient to work with my toolchain.
-SDL2
-SDL2_image
-SDL2_mixer
-SDL2_ttf
-SDL2_net
+SDL I had to make a work around I have a local_libs folder in my home directory where these are linked for local dev, each of the following sdl2 libs have been downloaded as the mingw varient to work with my toolchain:
+
+* SDL2
+* SDL2_image
+* SDL2_mixer
+* SDL2_ttf
+* SDL2_net
 
