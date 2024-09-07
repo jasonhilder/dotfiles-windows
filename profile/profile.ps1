@@ -19,6 +19,12 @@ Set-Alias ld lazydocker
 
 Set-Alias lg lazygit
 
+# Quick exit terminal
+function T-Exit {
+	exit
+}
+Set-Alias q T-Exit
+
 # Change to the home directory
 function Go-Home {
     Set-Location $HOME

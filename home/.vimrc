@@ -100,7 +100,6 @@ let NERDTreeWinPos = "right"
 " Colorscheme
 set termguicolors
 colorscheme catppuccin_mocha
-hi Normal guibg=NONE ctermbg=NONE
 
 " --------------------------------------------------------------------------
 

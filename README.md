@@ -1,5 +1,7 @@
 # Dotfiles Windows :)
 
+![Desktop](/desktop.jpg)
+
 ## Setup Steps
 
 #### Install windows
