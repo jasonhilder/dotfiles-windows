@@ -58,7 +58,7 @@ Remember to run :PlugInstall on first run
 
 ### Software installed without scoop
 
-Generally software that has auto updates like browsers, or things I found don't work as expected with my setup and scoop.
+Generally software that has auto updates like browsers, or software that doesn't work as expected with my setup and scoop.
 
 [Firefox](https://www.mozilla.org/en-US/firefox/developer/)
 
