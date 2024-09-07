@@ -5,30 +5,40 @@ Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 
 # Aliases
 # ------------------------------------
-Set-Alias vim nvim 
 
+# Use ls alias for listing files (may not be ideal if you have `ls` as an alias for another command)
 Set-Alias ll ls
 
+# Create a new item (file or directory)
 Set-Alias touch New-Item
 
-Set-Alias lg lazygit
+# Get the command information (alternative to `which` in other shells)
+Set-Alias which Get-Command
 
 Set-Alias ld lazydocker
 
-Set-Alias home 'cd ~'
+Set-Alias lg lazygit
 
-# Determine size of a file or total size of a directory
-Set-Alias fs Get-DiskUsage
+# Change to the home directory
+function Go-Home {
+    Set-Location $HOME
+}
+Set-Alias home Go-Home
 
-# Empty the Recycle Bin on all drives
-Set-Alias emptytrash Empty-RecycleBin
+# Change to the dotfiles directory
+function Go-Dotfiles {
+    Set-Location $HOME/dotfiles
+}
+Set-Alias dots Go-Dotfiles
 
-# Cleanup old files all drives
-Set-Alias cleandisks Clean-Disks
+# CMake with MinGW Makefiles generator
+function Mingw-cmake {
+	cmake .. -G "MinGW Makefiles"
+}
+Set-Alias wincmake Mingw-cmake
 
-# Reload the shell
-Set-Alias reload Reload-Powershell
-
-# ------------------------------------
-# starship init
-Invoke-Expression (&starship init powershell)
+# Use mingw32-make for make (usually requires installation)
+function Mingw-make {
+	mingw32-make
+}
+Set-Alias winmake Mingw-make

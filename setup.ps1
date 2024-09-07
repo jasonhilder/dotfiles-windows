@@ -10,6 +10,7 @@ Copy-Item -Path ".\profile\*" -Destination $profileDir
 # Copy-Item -Force -Path ".\home\**" -Destination $home -Recurse -Include **
 
 # appdata files from repo to system
+Copy-Item -Force -Path ".\appdata\roaming\*" -Destination "C:\Users\Jason\AppData\Roaming" -Recurse -Include **
 Copy-Item -Force -Path ".\appdata\local\*" -Destination "C:\Users\Jason\AppData\Local" -Recurse -Include **
 
 # home config files/folders from repo home folder
