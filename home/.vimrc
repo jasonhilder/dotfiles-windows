@@ -92,11 +92,18 @@ set pumheight=25  " Maximum number of items to show in popup menu
 set splitbelow
 set splitright
 set noshowmode 
+" disable sounds
+set belloff=all
+" Use ripgrep
+set grepprg=rg\ --vimgrep\ --no-heading
 " NerdTree Settings
 let NERDTreeShowHidden=1
 let NERDTreeRespectWildIgnore=1
 let NERDTreeIgnore=['\.git$', '\.jpg$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.png$', '\.gif$', '\.db$']
 let NERDTreeWinPos = "right"
+let NERDTreeQuitOnOpen=1
+" ...
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Colorscheme
 set termguicolors
 colorscheme catppuccin_mocha
@@ -148,6 +155,12 @@ inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
 noremap <silent> <C-S> :update<CR>
 vnoremap <silent> <C-S> <C-C>:update<CR>
 inoremap <silent> <C-S> <C-O>:update<CR>
+
+" Maps for vimfiles/funcs file
+nnoremap <Space>q :call ToggleQuickfix()<CR>
+nnoremap <Space>r :call CfdoReplace()<CR>
+nnoremap <Space>j :cnext<CR>
+nnoremap <Space>k :cprev<CR>
 " --------------------------------------------------------------------------
 
 " -------------------------------- STATUS LINE -----------------------------
@@ -158,6 +171,12 @@ let g:lightline = {'colorscheme': 'catppuccin_mocha'}
 
 " --------------------------------------------------------------------------
 
+" -------------------------------- RANDOMSTUFF -----------------------------
+so ~/vimfiles/funcs.vim
+
+" --------------------------------------------------------------------------
+
 " ------------------------------- LOAD CONFIGS -----------------------------
 
 "  LSP specifics
+" so ~/vimfiles/lsp-config.vim
