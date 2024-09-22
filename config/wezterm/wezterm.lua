@@ -32,45 +32,46 @@ config.font_size = 11.0
 --------------------------------------------
 -- key maps
 --------------------------------------------
+config.leader = { key = 'f', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.keys = {
     {
-        key = '=',
+        key = 's',
         mods = 'ALT',
         action = act.SplitHorizontal { domain = 'CurrentPaneDomain' },
     },
     {
-        key = '-',
+        key = 'v',
         mods = 'ALT',
         action = act.SplitVertical { domain = 'CurrentPaneDomain' },
     },
     {
-        key = 'o',
-        mods = 'ALT',
+        key = 'n',
+        mods = 'LEADER',
         action = act.ActivateTabRelative(1)
     },
     {
         key = 'p',
-        mods = 'ALT',
+        mods = 'LEADER',
         action = act.ActivateTabRelative(-1)
     },
     {
         key = 'l',
-        mods = 'ALT',
+        mods = 'LEADER',
         action = act.ActivatePaneDirection 'Right',
     },
     {
         key = 'h',
-        mods = 'ALT',
+        mods = 'LEADER',
         action = act.ActivatePaneDirection 'Left',
     },
     {
         key = 'k',
-        mods = 'ALT',
+        mods = 'LEADER',
         action = act.ActivatePaneDirection 'Up',
     },
     {
         key = 'j',
-        mods = 'ALT',
+        mods = 'LEADER',
         action = act.ActivatePaneDirection 'Down',
     },
     {
@@ -94,7 +95,7 @@ config.keys = {
         action = act.AdjustPaneSize { 'Right', 5 },
     },
     {
-        key = '\\',
+        key = 'n',
         mods = 'ALT',
         action = act.SpawnTab 'CurrentPaneDomain',
     },
